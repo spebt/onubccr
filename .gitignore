@@ -1,1 +1,6 @@
 sbatch-scripts/tests/.envvars
+sbatch-scripts/run-pymatcal/.envvars
+.ipynb_checkpoints
+*.out
+*.png
+*.hdf5

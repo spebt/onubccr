@@ -6,7 +6,7 @@
 #   take longer for the job to start.
 #   Format: dd:hh:mm:ss
 
-#SBATCH --time=00:30:00
+#SBATCH --time=01:00:00
 
 #   Define: number of tasks
 #           number of tasks per node
@@ -15,9 +15,8 @@
 #   Note: You can not request too many nodes in debug partition
 #
 
-#SBATCH --ntasks=16
+#SBATCH --nodes=50
 #SBATCH --ntasks-per-node=1
-#SBATCH --nodes=16
 
 #   Specify the real memory required per node.  Default units are megabytes.
 #   Different units can be specified using the suffix  [K|M|G|T]
@@ -49,4 +48,4 @@ module load intel hdf5/1.14.1 python/3.9.6-bare
 export I_MPI_PMI_LIBRARY=/opt/software/slurm/lib64/libpmi.so
 RUNDIR="$(awk -e '$1 ~ /^PYMATCALPATH:(.*)$/ {print $2}' .envvars)"
 source $RUNDIR/.venv/bin/activate
-srun -n 16 python $RUNDIR/examples/get_all_ppdfs_mpi.py test_small.yml
+srun python $RUNDIR/examples/get_all_ppdfs_mpi.py test_small_rshift.yml
